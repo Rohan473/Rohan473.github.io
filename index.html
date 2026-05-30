@@ -16,7 +16,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rohan — Machine Learning & Data Science</title>
+<title>Rohan Patil — Machine Learning & Data Science</title>
 <meta name="description" content="Final-year B.Tech student focused on machine learning and data science. Portfolio of ML projects." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +65,7 @@
   h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; line-height:1.1; letter-spacing:-.01em; }
 
   a{ color:inherit; text-decoration:none; }
+  [data-scroll]{ cursor:pointer; }
 
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
 
@@ -304,14 +305,13 @@
 
 <header>
   <nav>
-    <a href="#top" class="brand"><span class="dot"></span>Rohan</a>
+    <a data-scroll="top" class="brand"><span class="dot"></span>Rohan Patil</a>
     <div class="nav-links" id="navlinks">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <!-- TODO: point this at your real resume PDF -->
-      <a href="#contact" class="nav-cta">Get in touch</a>
+      <a data-scroll="about">About</a>
+      <a data-scroll="skills">Skills</a>
+      <a data-scroll="projects">Projects</a>
+      <a data-scroll="education">Education</a>
+      <a data-scroll="contact" class="nav-cta">Get in touch</a>
     </div>
     <button class="menu-btn" id="menubtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -326,12 +326,12 @@
       <div class="blob b2"></div>
       <span class="eyebrow">● Open to ML internships & roles</span>
       <!-- TODO: replace "Rohan" with your full name -->
-      <h1>Hi, I'm Rohan — I build <span class="accent">machine learning</span> that explains itself.</h1>
+      <h1>Hi, I'm Rohan Patil — I build <span class="accent">machine learning</span> that explains itself.</h1>
       <p class="lead">Final-year B.Tech student focused on machine learning and data science. I like turning messy data into models people can actually trust, understand, and act on.</p>
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View my work →</a>
+        <a data-scroll="projects" class="btn btn-primary">View my work →</a>
         <!-- TODO: link to your resume PDF -->
-        <a href="#" class="btn btn-ghost">Download résumé</a>
+        <a href="https://drive.google.com/file/d/12JSKR2oPQdPyzUnAozeR0RvCARQkJgMY/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">Download résumé</a>
       </div>
     </div>
   </section>
@@ -345,16 +345,16 @@
       </div>
       <div class="about-grid reveal">
         <div>
-          <p>I'm a final-year <strong>B.Tech</strong> student gravitating toward machine learning and data science. Most of my work lives at the intersection of <strong>solid modeling and clear explanation</strong> — I care as much about <em>why</em> a model makes a prediction as the prediction itself.</p>
-          <p>That shows up in how I build: handling class imbalance properly, validating with stratified cross-validation, reaching for tools like <strong>SHAP</strong> to keep models interpretable, and staying alert to traps like data leakage. I'd rather ship something honest and understandable than something that just looks impressive on a metric.</p>
-          <p>Right now I'm sharpening fundamentals — algorithms, model evaluation, and the math behind the methods — while looking for an ML role where I can keep learning fast.</p>
+          <p>I'm a final-year <strong>B.Tech</strong> student at IIIT Guwahati who likes building across the whole stack — from the <strong>machine learning models</strong> themselves to the <strong>infrastructure that serves them</strong> and the <strong>web apps people actually click around in</strong>.</p>
+          <p>That breadth shows up in my work. I've built <strong>AI infrastructure</strong> — a persistent memory layer with an MCP server, hybrid vector + graph retrieval, and token budgeting to keep LLM context lean. I've shipped a <strong>full-stack product</strong> end-to-end with FastAPI, React, MongoDB, and an OCR pipeline. And I've done plenty of <strong>applied ML</strong>: classification, regression, optimization, and explainability with tools like SHAP. Across all of it I lean toward systems that are efficient, honest, and understandable rather than just impressive on a single metric.</p>
+          <p>I'm comfortable moving between <strong>research depth</strong> (I've also worked on reinforcement learning and quantitative research) and <strong>practical shipping</strong> — Docker, CI, and clean APIs. Right now I'm sharpening fundamentals and looking for a role where I can keep building fast.</p>
         </div>
         <div class="fact-card">
-          <div class="fact"><span class="ico">🎓</span><div><div class="k">Studying</div><div class="v">B.Tech, final year</div></div></div>
-          <!-- TODO: update location -->
+          <div class="fact"><span class="ico">🎓</span><div><div class="k">Studying</div><div class="v">B.Tech · IIIT Guwahati</div></div></div>
+          <!-- TODO: update location if you'd like something more specific -->
           <div class="fact"><span class="ico">📍</span><div><div class="k">Based in</div><div class="v">India</div></div></div>
-          <div class="fact"><span class="ico">🔬</span><div><div class="k">Focus</div><div class="v">ML · Data Science · AI tooling</div></div></div>
-          <div class="fact"><span class="ico">💬</span><div><div class="k">Ask me about</div><div class="v">Explainability & class imbalance</div></div></div>
+          <div class="fact"><span class="ico">🔬</span><div><div class="k">Works across</div><div class="v">ML · AI infra · Full-stack</div></div></div>
+          <div class="fact"><span class="ico">💬</span><div><div class="k">Ask me about</div><div class="v">RAG, token budgeting & explainable ML</div></div></div>
         </div>
       </div>
     </div>
@@ -426,15 +426,15 @@
       <!-- PROJECT 1 — Persistent Research Memory -->
       <article class="project reveal">
         <div class="proj-top">
-          <span class="proj-tag">Knowledge Graph · MCP · RAG</span>
+          <span class="proj-tag">Token Budgeting · MCP · RAG</span>
         </div>
         <h3>Persistent Research Memory</h3>
-        <p class="summary">A long-term memory layer that gives LLM assistants searchable recall of an entire research program. It turns raw chat-export transcripts into a structured knowledge graph, then serves the most relevant context back through an MCP server — so research compounds across sessions instead of resetting every time a chat ends.</p>
+        <p class="summary">A memory layer that makes long, deep research sessions token-efficient. It stores the settings, configurations, and prior results you'd otherwise re-explain every single time, then compiles just the relevant slice back into the prompt — so the context budget goes to advanced reasoning instead of re-establishing what's already known.</p>
         <ul class="proj-highlights">
-          <li>Exposed over a <span class="keyword">Model Context Protocol (MCP)</span> server, so assistants like Claude and ChatGPT can query the memory through a standard tool interface (semantic, symbolic, and context-compilation tools).</li>
-          <li><span class="keyword">Hybrid retrieval</span> that fuses semantic vector search (<span class="keyword">Qdrant</span> + sentence-transformer embeddings) with symbolic graph traversal, plus salience scoring and token-budget-aware context compilation to fit LLM context windows.</li>
-          <li>Builds the graph automatically from chat exports — parsing 16 sessions into <span class="keyword">~165 entity nodes</span> (91 experiments plus concepts, datafields, operators, and failure modes) linked by <span class="keyword">1,295 edges</span>.</li>
-          <li>Production-shaped: <span class="keyword">FastAPI</span> service, Dockerized with docker-compose, a test suite, and GitHub Actions CI — demonstrated on quantitative research but built as a generic framework.</li>
+          <li><span class="keyword">Token budgeting at its core</span>: a salience-scored memory store and a budget-aware context compiler assemble the most useful memories within a fixed token limit. Frequently-reused settings and configs are saved once and recalled cheaply instead of being re-derived each session — freeing context for deeper reasoning.</li>
+          <li><span class="keyword">Hybrid retrieval</span> fuses semantic vector search (<span class="keyword">Qdrant</span> + sentence-transformer embeddings) with symbolic graph traversal over a knowledge graph of past experiments.</li>
+          <li>Exposed over a <span class="keyword">Model Context Protocol (MCP)</span> server, so assistants like Claude and ChatGPT can tap the memory through a standard tool interface.</li>
+          <li>Production-shaped: builds its graph automatically from chat exports (16 sessions → ~165 nodes, 1,295 edges), served by a <span class="keyword">FastAPI</span> app, Dockerized with tests and GitHub Actions CI — demonstrated on quant research but built as a generic framework.</li>
         </ul>
         <div class="stack">
           <span class="chip">Python</span><span class="chip">MCP</span><span class="chip">Qdrant</span>
@@ -442,7 +442,7 @@
           <span class="chip">FastAPI</span><span class="chip">Docker</span>
         </div>
         <div class="proj-links">
-          <a href="https://github.com/Rohan473/Persistant-memory">View code ↗</a>
+          <a href="https://github.com/Rohan473/Persistant-memory" target="_blank" rel="noopener">View code ↗</a>
         </div>
       </article>
 
@@ -465,7 +465,7 @@
         </div>
         <div class="proj-links">
           <!-- Verify this is the correct repo before publishing -->
-          <a href="https://github.com/Rohan473/OCR">View code ↗</a>
+          <a href="https://github.com/Rohan473/OCR" target="_blank" rel="noopener">View code ↗</a>
         </div>
       </article>
 
@@ -487,9 +487,9 @@
           <span class="chip">imbalanced-learn</span><span class="chip">SHAP</span><span class="chip">Streamlit</span>
         </div>
         <div class="proj-links">
-          <!-- TODO: add your GitHub repo + live demo links -->
-          <a href="#">View code ↗</a>
-          <a href="#">Live demo ↗</a>
+          <!-- View code points to GitHub profile; swap for the exact repo when handy -->
+          <a href="https://github.com/Rohan473" target="_blank" rel="noopener">View code ↗</a>
+          <a href="https://pan-attrition-app-oadspf3hy6uek2dksvy4dm.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
         </div>
       </article>
 
@@ -510,8 +510,9 @@
           <span class="chip">SciPy</span><span class="chip">Quantile Regression</span>
         </div>
         <div class="proj-links">
-          <!-- TODO: add your GitHub repo + live demo links -->
-          <a href="#">View code ↗</a>
+          <!-- View code points to GitHub profile; swap for the exact repo when handy -->
+          <a href="https://github.com/Rohan473" target="_blank" rel="noopener">View code ↗</a>
+          <a href="https://nhm9rrocjxvuzewrz4ngpm.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
         </div>
       </article>
     </div>
@@ -526,10 +527,10 @@
       </div>
       <div class="timeline reveal">
         <div class="tl-item">
-          <!-- TODO: update college name, dates, and any details -->
+          <!-- Inferred from your email (iiitg.ac.in, batch 22b) — correct if needed -->
           <div class="when">2022 — 2026 (final year)</div>
           <h3>B.Tech</h3>
-          <div class="where">Your College / University</div>
+          <div class="where">Indian Institute of Information Technology, Guwahati</div>
           <p>Coursework and projects across machine learning, data science, and core computer science fundamentals. Focused on building hands-on, end-to-end ML projects alongside the theory.</p>
         </div>
         <div class="tl-item">
@@ -551,9 +552,9 @@
         <p>I'm open to ML internships and entry-level roles, and I'm always happy to talk shop. The fastest way to reach me is email.</p>
         <div class="contact-actions">
           <!-- TODO: replace with your real email -->
-          <a href="mailto:you@example.com" class="btn btn-light">Email me ✉</a>
+          <a href="mailto:rohan.patil22b@iiitg.ac.in" class="btn btn-light">Email me ✉</a>
           <!-- TODO: replace with your real LinkedIn -->
-          <a href="#" class="btn btn-outline">LinkedIn ↗</a>
+          <a href="https://github.com/Rohan473" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
         </div>
       </div>
     </div>
@@ -563,12 +564,11 @@
 
 <footer>
   <div class="wrap footer-row">
-    <small>© <span id="year"></span> Rohan · Built with care.</small>
+    <small>© <span id="year"></span> Rohan Patil · Built with care.</small>
     <div class="socials">
       <!-- TODO: replace all of these with your real links -->
-      <a href="#">GitHub</a>
-      <a href="#">LinkedIn</a>
-      <a href="mailto:you@example.com">Email</a>
+      <a href="https://github.com/Rohan473" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:rohan.patil22b@iiitg.ac.in">Email</a>
     </div>
   </div>
 </footer>
@@ -581,9 +581,17 @@
     links.classList.toggle('open');
     btn.classList.toggle('open');
   });
-  links.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => { links.classList.remove('open'); btn.classList.remove('open'); })
-  );
+  // smooth in-page scrolling — driven by data-scroll (no href) so the
+  // sandboxed preview has no URL to open in a new tab
+  document.querySelectorAll('[data-scroll]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById(a.getAttribute('data-scroll'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      links.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  });
 
   // scroll reveal
   const io = new IntersectionObserver((entries) => {
