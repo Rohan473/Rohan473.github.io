@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  PORTFOLIO — single self-contained file. No build step needed.
+  Open directly in a browser, or host on GitHub Pages / Netlify / Vercel.
+
+  >>> THINGS TO PERSONALIZE (search for "TODO"):
+      - Your full name (currently "Rohan")
+      - Email, GitHub, LinkedIn, resume link  (in the hero + contact + footer)
+      - College name + graduation year (Education section)
+      - Location
+      - GitHub repo links on each project card
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rohan — Machine Learning & Data Science</title>
+<meta name="description" content="Final-year B.Tech student focused on machine learning and data science. Portfolio of ML projects." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:        #FBF6EE;
+    --bg-2:      #F4EADB;
+    --card:      #FFFDF8;
+    --ink:       #2E2620;
+    --ink-soft:  #6B5E52;
+    --line:      #E6D8C4;
+    --clay:      #C75D3C;
+    --clay-deep: #A8472A;
+    --ochre:     #D9A441;
+    --sage:      #6F7E5C;
+    --shadow:    18px 18px 40px rgba(120, 90, 60, .10);
+    --shadow-sm: 6px 6px 18px rgba(120, 90, 60, .08);
+    --maxw: 1080px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Hanken Grotesk', sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* warm paper grain overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none; z-index:9999;
+    opacity:.045; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection{ background:var(--clay); color:#fff; }
+
+  h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; line-height:1.1; letter-spacing:-.01em; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,246,238,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--maxw); margin:0 auto;
+    padding:18px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.25rem;
+    display:flex; align-items:center; gap:.55rem;
+  }
+  .brand .dot{
+    width:11px; height:11px; border-radius:50%;
+    background:var(--clay); display:inline-block;
+    box-shadow:0 0 0 4px rgba(199,93,60,.18);
+  }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{
+    font-size:.95rem; font-weight:500; color:var(--ink-soft);
+    position:relative; transition:color .2s;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-5px;
+    width:0; height:2px; background:var(--clay); transition:width .25s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:var(--ink); color:var(--bg)!important;
+    padding:9px 18px; border-radius:999px; font-weight:600;
+    transition:transform .2s, background .2s;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); background:var(--clay-deep); }
+  .nav-cta::after{ display:none; }
+  .menu-btn{ display:none; background:none; border:none; cursor:pointer; }
+  .menu-btn span{ display:block; width:24px; height:2px; background:var(--ink); margin:5px 0; transition:.25s; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:96px 0 72px; position:relative; }
+  .hero .blob{
+    position:absolute; z-index:0; border-radius:50%;
+    filter:blur(60px); opacity:.5;
+  }
+  .blob.b1{ width:380px; height:380px; background:#F2C9A0; top:-60px; right:-80px; }
+  .blob.b2{ width:300px; height:300px; background:#CFE0BC; bottom:-120px; left:-60px; opacity:.4; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:.85rem; font-weight:600; letter-spacing:.04em;
+    color:var(--clay-deep); text-transform:uppercase;
+    background:rgba(199,93,60,.10); padding:7px 14px; border-radius:999px;
+    position:relative; z-index:2;
+  }
+  .hero h1{
+    font-size:clamp(2.8rem, 7vw, 5rem);
+    margin:22px 0 18px; position:relative; z-index:2;
+    max-width:14ch;
+  }
+  .hero h1 .accent{ color:var(--clay); font-style:italic; font-weight:500; }
+  .hero .lead{
+    font-size:clamp(1.05rem, 2vw, 1.3rem);
+    color:var(--ink-soft); max-width:54ch; position:relative; z-index:2;
+  }
+  .hero-actions{
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;
+    position:relative; z-index:2;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:13px 24px; border-radius:999px; font-weight:600; font-size:.98rem;
+    transition:transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn-primary{ background:var(--clay); color:#fff; box-shadow:var(--shadow-sm); }
+  .btn-primary:hover{ transform:translateY(-3px); background:var(--clay-deep); box-shadow:var(--shadow); }
+  .btn-ghost{ border:1.5px solid var(--line); color:var(--ink); background:var(--card); }
+  .btn-ghost:hover{ transform:translateY(-3px); border-color:var(--clay); }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:80px 0; position:relative; }
+  .section-head{ margin-bottom:44px; }
+  .section-num{
+    font-family:'Fraunces', serif; font-style:italic;
+    color:var(--clay); font-size:1rem; font-weight:500;
+  }
+  .section-head h2{ font-size:clamp(1.9rem, 4vw, 2.8rem); margin-top:6px; }
+  .section-head p{ color:var(--ink-soft); margin-top:10px; max-width:52ch; }
+
+  .tinted{ background:var(--bg-2); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:start; }
+  .about-grid p{ font-size:1.1rem; color:var(--ink-soft); margin-bottom:18px; }
+  .about-grid p strong{ color:var(--ink); font-weight:600; }
+  .fact-card{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:28px; box-shadow:var(--shadow-sm);
+  }
+  .fact{ display:flex; gap:14px; padding:14px 0; border-bottom:1px dashed var(--line); }
+  .fact:last-child{ border-bottom:none; }
+  .fact .ico{ font-size:1.3rem; }
+  .fact .k{ font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); }
+  .fact .v{ font-weight:600; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .skill-col{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:28px; box-shadow:var(--shadow-sm); transition:transform .25s, box-shadow .25s;
+  }
+  .skill-col:hover{ transform:translateY(-5px); box-shadow:var(--shadow); }
+  .skill-col h3{ font-size:1.2rem; display:flex; align-items:center; gap:.55rem; margin-bottom:18px; }
+  .skill-col h3 .ico{ font-size:1.4rem; }
+  .chips{ display:flex; flex-wrap:wrap; gap:9px; }
+  .chip{
+    background:var(--bg-2); border:1px solid var(--line);
+    padding:6px 13px; border-radius:999px; font-size:.86rem; font-weight:500;
+    transition:background .2s, color .2s;
+  }
+  .skill-col:hover .chip{ background:#fff; }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    background:var(--card); border:1px solid var(--line); border-radius:24px;
+    padding:38px; margin-bottom:30px; box-shadow:var(--shadow-sm);
+    position:relative; overflow:hidden;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .project:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .project::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
+    background:linear-gradient(var(--clay), var(--ochre));
+  }
+  .proj-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+  .proj-tag{
+    font-size:.78rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--sage); background:rgba(111,126,92,.12); padding:5px 12px; border-radius:999px;
+  }
+  .project h3{ font-size:clamp(1.4rem, 3vw, 1.9rem); margin:14px 0 12px; }
+  .project .summary{ color:var(--ink-soft); font-size:1.05rem; max-width:62ch; margin-bottom:22px; }
+  .proj-highlights{ list-style:none; display:grid; gap:11px; margin-bottom:24px; }
+  .proj-highlights li{ display:flex; gap:12px; align-items:flex-start; color:var(--ink); }
+  .proj-highlights li::before{
+    content:"→"; color:var(--clay); font-weight:700; flex-shrink:0; margin-top:1px;
+  }
+  .proj-highlights .keyword{ font-weight:600; }
+  .stack{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+  .stack .chip{ background:var(--bg-2); }
+  .proj-links{ display:flex; gap:18px; margin-top:22px; }
+  .proj-links a{
+    font-weight:600; font-size:.95rem; color:var(--clay-deep);
+    display:inline-flex; align-items:center; gap:.4rem; transition:gap .2s;
+  }
+  .proj-links a:hover{ gap:.7rem; }
+
+  /* ---------- EXPERIENCE / EDU ---------- */
+  .timeline{ position:relative; padding-left:30px; }
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:var(--line);
+  }
+  .tl-item{ position:relative; padding-bottom:34px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:""; position:absolute; left:-30px; top:6px;
+    width:14px; height:14px; border-radius:50%;
+    background:var(--clay); border:3px solid var(--bg);
+    box-shadow:0 0 0 2px var(--clay);
+  }
+  .tl-item .when{ font-size:.85rem; font-weight:600; color:var(--clay-deep); letter-spacing:.02em; }
+  .tl-item h3{ font-size:1.25rem; margin:5px 0 4px; }
+  .tl-item .where{ color:var(--ink-soft); font-weight:500; }
+  .tl-item p{ color:var(--ink-soft); margin-top:8px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:var(--ink); color:var(--bg); border-radius:28px;
+    padding:56px clamp(28px,6vw,64px); text-align:center; position:relative; overflow:hidden;
+  }
+  .contact-card::after{
+    content:""; position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(217,164,65,.35), transparent 70%);
+    top:-120px; right:-90px;
+  }
+  .contact-card h2{ font-size:clamp(2rem,5vw,3.2rem); position:relative; z-index:2; }
+  .contact-card h2 .accent{ color:var(--ochre); font-style:italic; font-weight:500; }
+  .contact-card p{ color:#D8CBBC; margin:16px auto 30px; max-width:48ch; position:relative; z-index:2; }
+  .contact-actions{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; position:relative; z-index:2; }
+  .contact-actions .btn-light{ background:var(--ochre); color:var(--ink); }
+  .contact-actions .btn-light:hover{ transform:translateY(-3px); background:#fff; }
+  .contact-actions .btn-outline{ border:1.5px solid rgba(255,255,255,.3); color:var(--bg); }
+  .contact-actions .btn-outline:hover{ transform:translateY(-3px); border-color:var(--ochre); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:40px 0; border-top:1px solid var(--line); }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-row .socials{ display:flex; gap:22px; }
+  .footer-row .socials a{ color:var(--ink-soft); font-weight:500; transition:color .2s; }
+  .footer-row .socials a:hover{ color:var(--clay); }
+  .footer-row small{ color:var(--ink-soft); }
+
+  /* ---------- REVEAL ANIM ---------- */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  .hero .eyebrow{ animation:rise .7s ease both; }
+  .hero h1{ animation:rise .7s .1s ease both; }
+  .hero .lead{ animation:rise .7s .2s ease both; }
+  .hero-actions{ animation:rise .7s .3s ease both; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(24px); } to{ opacity:1; transform:none; } }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:820px){
+    .about-grid{ grid-template-columns:1fr; gap:30px; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .nav-links{
+      position:fixed; inset:64px 0 auto 0;
+      flex-direction:column; gap:0;
+      background:var(--bg); border-bottom:1px solid var(--line);
+      padding:10px 0; transform:translateY(-130%); transition:transform .3s ease;
+    }
+    .nav-links.open{ transform:none; }
+    .nav-links a{ padding:14px 28px; width:100%; }
+    .menu-btn{ display:block; }
+    .menu-btn.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .menu-btn.open span:nth-child(2){ opacity:0; }
+    .menu-btn.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="brand"><span class="dot"></span>Rohan</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <!-- TODO: point this at your real resume PDF -->
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+    <button class="menu-btn" id="menubtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <span class="eyebrow">● Open to ML internships & roles</span>
+      <!-- TODO: replace "Rohan" with your full name -->
+      <h1>Hi, I'm Rohan — I build <span class="accent">machine learning</span> that explains itself.</h1>
+      <p class="lead">Final-year B.Tech student focused on machine learning and data science. I like turning messy data into models people can actually trust, understand, and act on.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View my work →</a>
+        <!-- TODO: link to your resume PDF -->
+        <a href="#" class="btn btn-ghost">Download résumé</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="tinted">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">01 — About</span>
+        <h2>A bit about me</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div>
+          <p>I'm a final-year <strong>B.Tech</strong> student gravitating toward machine learning and data science. Most of my work lives at the intersection of <strong>solid modeling and clear explanation</strong> — I care as much about <em>why</em> a model makes a prediction as the prediction itself.</p>
+          <p>That shows up in how I build: handling class imbalance properly, validating with stratified cross-validation, reaching for tools like <strong>SHAP</strong> to keep models interpretable, and staying alert to traps like data leakage. I'd rather ship something honest and understandable than something that just looks impressive on a metric.</p>
+          <p>Right now I'm sharpening fundamentals — algorithms, model evaluation, and the math behind the methods — while looking for an ML role where I can keep learning fast.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact"><span class="ico">🎓</span><div><div class="k">Studying</div><div class="v">B.Tech, final year</div></div></div>
+          <!-- TODO: update location -->
+          <div class="fact"><span class="ico">📍</span><div><div class="k">Based in</div><div class="v">India</div></div></div>
+          <div class="fact"><span class="ico">🔬</span><div><div class="k">Focus</div><div class="v">ML · Data Science · AI tooling</div></div></div>
+          <div class="fact"><span class="ico">💬</span><div><div class="k">Ask me about</div><div class="v">Explainability & class imbalance</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">02 — Skills</span>
+        <h2>Tools I reach for</h2>
+        <p>A working toolkit built across projects and interview-grade fundamentals.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-col reveal">
+          <h3><span class="ico">🐍</span>Languages & Core</h3>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">pandas</span>
+            <span class="chip">Data structures & algorithms</span>
+          </div>
+        </div>
+        <div class="skill-col reveal">
+          <h3><span class="ico">🤖</span>Machine Learning</h3>
+          <div class="chips">
+            <span class="chip">scikit-learn</span>
+            <span class="chip">XGBoost</span>
+            <span class="chip">Logistic Regression</span>
+            <span class="chip">Random Forest</span>
+            <span class="chip">Gradient Boosting</span>
+            <span class="chip">SMOTE</span>
+            <span class="chip">SHAP</span>
+            <span class="chip">Quantile Regression</span>
+            <span class="chip">Cross-validation</span>
+            <span class="chip">RAG</span>
+            <span class="chip">Vector search (Qdrant)</span>
+            <span class="chip">MCP</span>
+          </div>
+        </div>
+        <div class="skill-col reveal">
+          <h3><span class="ico">🛠️</span>Build & Ship</h3>
+          <div class="chips">
+            <span class="chip">FastAPI</span>
+            <span class="chip">React</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Streamlit</span>
+            <span class="chip">SciPy (SLSQP)</span>
+            <span class="chip">statsmodels</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">Model evaluation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" class="tinted">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">03 — Projects</span>
+        <h2>Selected work</h2>
+        <p>Work spanning AI infrastructure, full-stack development, and applied machine learning.</p>
+      </div>
+
+      <!-- PROJECT 1 — Persistent Research Memory -->
+      <article class="project reveal">
+        <div class="proj-top">
+          <span class="proj-tag">Knowledge Graph · MCP · RAG</span>
+        </div>
+        <h3>Persistent Research Memory</h3>
+        <p class="summary">A long-term memory layer that gives LLM assistants searchable recall of an entire research program. It turns raw chat-export transcripts into a structured knowledge graph, then serves the most relevant context back through an MCP server — so research compounds across sessions instead of resetting every time a chat ends.</p>
+        <ul class="proj-highlights">
+          <li>Exposed over a <span class="keyword">Model Context Protocol (MCP)</span> server, so assistants like Claude and ChatGPT can query the memory through a standard tool interface (semantic, symbolic, and context-compilation tools).</li>
+          <li><span class="keyword">Hybrid retrieval</span> that fuses semantic vector search (<span class="keyword">Qdrant</span> + sentence-transformer embeddings) with symbolic graph traversal, plus salience scoring and token-budget-aware context compilation to fit LLM context windows.</li>
+          <li>Builds the graph automatically from chat exports — parsing 16 sessions into <span class="keyword">~165 entity nodes</span> (91 experiments plus concepts, datafields, operators, and failure modes) linked by <span class="keyword">1,295 edges</span>.</li>
+          <li>Production-shaped: <span class="keyword">FastAPI</span> service, Dockerized with docker-compose, a test suite, and GitHub Actions CI — demonstrated on quantitative research but built as a generic framework.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">MCP</span><span class="chip">Qdrant</span>
+          <span class="chip">NetworkX</span><span class="chip">sentence-transformers</span>
+          <span class="chip">FastAPI</span><span class="chip">Docker</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/Rohan473/Persistant-memory">View code ↗</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 — ScribeAI -->
+      <article class="project reveal">
+        <div class="proj-top">
+          <span class="proj-tag">Full-stack · OCR</span>
+        </div>
+        <h3>ScribeAI — Handwritten Notes Digitizer</h3>
+        <p class="summary">A full-stack web app that turns photos of handwritten notes — including mixed English and Hindi — into searchable, editable, organized digital notes. Designed and built end-to-end, solo.</p>
+        <ul class="proj-highlights">
+          <li>Handwriting recognition via the <span class="keyword">Mistral OCR API</span>, with multi-language support across English and <span class="keyword">Devanagari (Hindi)</span> script.</li>
+          <li>A real notes workspace: drag-and-drop uploader and a <span class="keyword">split-pane editor</span> — original image on one side, editable transcription on the other.</li>
+          <li>Folder organization, <span class="keyword">full-text search</span> across every note, and <span class="keyword">searchable PDF export</span> (an invisible text layer over the original image via ReportLab).</li>
+          <li>Built end-to-end: <span class="keyword">FastAPI</span> backend, <span class="keyword">React</span> frontend, and a <span class="keyword">MongoDB</span> data model.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">React</span><span class="chip">FastAPI</span><span class="chip">MongoDB</span>
+          <span class="chip">Mistral OCR API</span><span class="chip">Python</span><span class="chip">ReportLab</span>
+        </div>
+        <div class="proj-links">
+          <!-- Verify this is the correct repo before publishing -->
+          <a href="https://github.com/Rohan473/OCR">View code ↗</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 — Employee Attrition -->
+      <article class="project reveal">
+        <div class="proj-top">
+          <span class="proj-tag">Classification · Explainability</span>
+        </div>
+        <h3>Employee Attrition Risk Scoring System</h3>
+        <p class="summary">An end-to-end pipeline that predicts which employees are at risk of leaving and produces an interpretable risk score for each one — packaged in an interactive dashboard so non-technical stakeholders can explore it.</p>
+        <ul class="proj-highlights">
+          <li>Benchmarked <span class="keyword">Logistic Regression, Random Forest, Gradient Boosting, and XGBoost</span> to pick the strongest performer.</li>
+          <li>Tackled class imbalance with <span class="keyword">SMOTE</span> and validated honestly using <span class="keyword">stratified k-fold cross-validation</span>.</li>
+          <li>Used <span class="keyword">SHAP</span> to surface the drivers behind each prediction, turning a black box into something HR teams can reason about.</li>
+          <li>Shipped an interactive <span class="keyword">Streamlit dashboard</span> for live risk scoring and what-if exploration.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">XGBoost</span>
+          <span class="chip">imbalanced-learn</span><span class="chip">SHAP</span><span class="chip">Streamlit</span>
+        </div>
+        <div class="proj-links">
+          <!-- TODO: add your GitHub repo + live demo links -->
+          <a href="#">View code ↗</a>
+          <a href="#">Live demo ↗</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="project reveal">
+        <div class="proj-top">
+          <span class="proj-tag">Regression · Optimization</span>
+        </div>
+        <h3>Restaurant Profit Forecasting & Channel-Mix Optimizer</h3>
+        <p class="summary">A decision-support tool that forecasts profit and then recommends how to allocate effort across sales channels for the best return — pairing predictive modeling with constrained optimization.</p>
+        <ul class="proj-highlights">
+          <li>Built regression models plus <span class="keyword">quantile regression</span> to forecast profit with realistic uncertainty bands, not just point estimates.</li>
+          <li>Framed channel allocation as a constrained problem and solved it with <span class="keyword">SLSQP optimization</span> to recommend an optimal mix.</li>
+          <li>Caught and corrected a <span class="keyword">data-leakage bug</span> — an R² near 1.0 traced to target-correlated features — and rebuilt the pipeline to report trustworthy performance.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">statsmodels</span>
+          <span class="chip">SciPy</span><span class="chip">Quantile Regression</span>
+        </div>
+        <div class="proj-links">
+          <!-- TODO: add your GitHub repo + live demo links -->
+          <a href="#">View code ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">04 — Education</span>
+        <h2>Background</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <!-- TODO: update college name, dates, and any details -->
+          <div class="when">20XX — 20XX (final year)</div>
+          <h3>B.Tech</h3>
+          <div class="where">Your College / University</div>
+          <p>Coursework and projects across machine learning, data science, and core computer science fundamentals. Focused on building hands-on, end-to-end ML projects alongside the theory.</p>
+        </div>
+        <div class="tl-item">
+          <!-- Optional: add coursework, certs, or relevant achievements here -->
+          <div class="when">Ongoing</div>
+          <h3>Self-directed ML practice</h3>
+          <div class="where">Independent</div>
+          <p>Sharpening algorithms and data structures, model evaluation, and the statistics behind common methods — preparing for ML engineering and data science roles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2>Let's build something <span class="accent">useful</span>.</h2>
+        <p>I'm open to ML internships and entry-level roles, and I'm always happy to talk shop. The fastest way to reach me is email.</p>
+        <div class="contact-actions">
+          <!-- TODO: replace with your real email -->
+          <a href="mailto:you@example.com" class="btn btn-light">Email me ✉</a>
+          <!-- TODO: replace with your real LinkedIn -->
+          <a href="#" class="btn btn-outline">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <small>© <span id="year"></span> Rohan · Built with care.</small>
+    <div class="socials">
+      <!-- TODO: replace all of these with your real links -->
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="mailto:you@example.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  const btn = document.getElementById('menubtn');
+  const links = document.getElementById('navlinks');
+  btn.addEventListener('click', () => {
+    links.classList.toggle('open');
+    btn.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => { links.classList.remove('open'); btn.classList.remove('open'); })
+  );
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
