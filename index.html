@@ -216,10 +216,8 @@
   .project h3{ font-size:clamp(1.4rem, 3vw, 1.9rem); margin:14px 0 12px; }
   .project .summary{ color:var(--ink-soft); font-size:1.05rem; max-width:62ch; margin-bottom:22px; }
   .proj-highlights{ list-style:none; display:grid; gap:11px; margin-bottom:24px; }
-  .proj-highlights li{ display:flex; gap:12px; align-items:flex-start; color:var(--ink); }
-  .proj-highlights li::before{
-    content:"→"; color:var(--clay); font-weight:700; flex-shrink:0; margin-top:1px;
-  }
+  .proj-highlights li{ position:relative; padding-left:22px; color:var(--ink); }
+  .proj-highlights li::before{ content:"→"; color:var(--clay); font-weight:700; position:absolute; left:0; top:0; }
   .proj-highlights .keyword{ font-weight:600; }
   .stack{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
   .stack .chip{ background:var(--bg-2); }
