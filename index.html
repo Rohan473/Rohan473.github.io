@@ -433,10 +433,10 @@
         <h3>Persistent Research Memory</h3>
         <p class="summary">A memory layer that makes long, deep research sessions token-efficient. It stores the settings, configurations, and prior results you'd otherwise re-explain every single time, then compiles just the relevant slice back into the prompt — so the context budget goes to advanced reasoning instead of re-establishing what's already known.</p>
         <ul class="proj-highlights">
-          <li><span class="keyword">Token budgeting at its core</span>: a salience-scored memory store and a budget-aware context compiler assemble the most useful memories within a fixed token limit. Frequently-reused settings and configs are saved once and recalled cheaply instead of being re-derived each session — freeing context for deeper reasoning.</li>
-          <li><span class="keyword">Hybrid retrieval</span> fuses semantic vector search (<span class="keyword">Qdrant</span> + sentence-transformer embeddings) with symbolic graph traversal over a knowledge graph of past experiments.</li>
-          <li>Exposed over a <span class="keyword">Model Context Protocol (MCP)</span> server, so assistants like Claude and ChatGPT can tap the memory through a standard tool interface.</li>
-          <li>Production-shaped: builds its graph automatically from chat exports (16 sessions → ~165 nodes, 1,295 edges), served by a <span class="keyword">FastAPI</span> app, Dockerized with tests and GitHub Actions CI — demonstrated on quant research but built as a generic framework.</li>
+          <li><span class="keyword">Token Budgeting:</span> a salience-scored memory store and a budget-aware context compiler assemble the most useful memories within a fixed token limit. Frequently-reused settings and configs are saved once and recalled cheaply instead of being re-derived each session — freeing context for deeper reasoning.</li>
+          <li><span class="keyword">Hybrid Retrieval:</span> fuses semantic vector search (Qdrant + sentence-transformer embeddings) with symbolic graph traversal over a knowledge graph of past experiments.</li>
+          <li><span class="keyword">MCP:</span> exposed over a Model Context Protocol server, so assistants like Claude and ChatGPT can tap the memory through a standard tool interface.</li>
+          <li><span class="keyword">FastAPI:</span> production-shaped backend — builds its graph automatically from chat exports (16 sessions → ~165 nodes, 1,295 edges), Dockerized with tests and GitHub Actions CI — demonstrated on quant research but built as a generic framework.</li>
         </ul>
         <div class="stack">
           <span class="chip">Python</span><span class="chip">MCP</span><span class="chip">Qdrant</span>
